@@ -4,6 +4,7 @@ using Labs1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Labs1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241123084216_addUserModelToDb")]
+    partial class addUserModelToDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -115,49 +118,6 @@ namespace Labs1.Migrations
                     b.HasKey("LevelId");
 
                     b.ToTable("GameLevels");
-
-                    b.HasData(
-                        new
-                        {
-                            LevelId = 1,
-                            title = "Cấp độ 1"
-                        },
-                        new
-                        {
-                            LevelId = 2,
-                            title = "Cấp độ 2"
-                        },
-                        new
-                        {
-                            LevelId = 3,
-                            title = "Cấp độ 3"
-                        });
-                });
-
-            modelBuilder.Entity("Labs1.Models.LevelResult", b =>
-                {
-                    b.Property<int>("QuizResultId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("QuizResultId"));
-
-                    b.Property<DateOnly>("CompletionDate")
-                        .HasColumnType("date");
-
-                    b.Property<int>("LevelId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Score")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("QuizResultId");
-
-                    b.ToTable("LevelResults");
                 });
 
             modelBuilder.Entity("Labs1.Models.Question", b =>
@@ -198,30 +158,6 @@ namespace Labs1.Migrations
                     b.HasKey("QuestionId");
 
                     b.ToTable("Question");
-
-                    b.HasData(
-                        new
-                        {
-                            QuestionId = 1,
-                            Answer = "Đáp án 1",
-                            ContentQuestion = "Câu hỏi 1",
-                            Option1 = "Đáp án 1",
-                            Option2 = "Đáp án 2",
-                            Option3 = "Đáp án 3",
-                            Option4 = "Đáp án 4",
-                            levelId = 1
-                        },
-                        new
-                        {
-                            QuestionId = 2,
-                            Answer = "Đáp án 2",
-                            ContentQuestion = "Câu hỏi 2",
-                            Option1 = "Đáp án 1",
-                            Option2 = "Đáp án 2",
-                            Option3 = "Đáp án 3",
-                            Option4 = "Đáp án 4",
-                            levelId = 2
-                        });
                 });
 
             modelBuilder.Entity("Labs1.Models.Region", b =>
@@ -239,18 +175,6 @@ namespace Labs1.Migrations
                     b.HasKey("RegionId");
 
                     b.ToTable("Region");
-
-                    b.HasData(
-                        new
-                        {
-                            RegionId = 1,
-                            Name = "Đồng bằng sông hồng"
-                        },
-                        new
-                        {
-                            RegionId = 2,
-                            Name = "Đồng bằng sông cuu long"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
