@@ -11,6 +11,6 @@ namespace Labs1.Models
         [ForeignKey("Region")]
 
         public int RegionId { get; set; }
-        public string? Avartar { get; set; }
+        public string? Avatar { get; set; }
     }
 }

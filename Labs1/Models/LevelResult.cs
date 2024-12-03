@@ -6,7 +6,7 @@ namespace Labs1.Models
     public class LevelResult
     {
         [Key]
-        public int QuizResultId { get; set; }
+        public int QuizzResultId { get; set; }
         [ForeignKey("User")]
         public string UserId { get; set; }
 
